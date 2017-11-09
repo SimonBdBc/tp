@@ -1,0 +1,24 @@
+<pre>
+<?php
+
+$host = "localhost";
+$password = "0000";
+$user = "root";
+$dbname = "dwm8";
+$port = 3306;
+
+$res = mysqli_connect($host, $user, $password, $dbname, $port);
+
+
+
+if (!$res) {
+    die('Erreur de connexion (' . mysqli_connect_errno() . ') '
+            . mysqli_connect_error());
+};
+
+mysqli_set_charset($res, 'utf8');
+
+$result = mysqli_query($res, 'SELECT * FROM `task` WHERE id=' . $_GET["id"] . ';');
+var_dump(mysqli_num_rows($result));
+
+var_dump(mysqli_fetch_all($result));
